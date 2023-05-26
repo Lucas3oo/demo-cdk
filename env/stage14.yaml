@@ -1,0 +1,2 @@
+slrk.deploy.bucket-name: slrk-my-bucket-for-stage14
+slrk.deploy.resource-secret: somePw
