@@ -7,7 +7,7 @@ import { DemoCdkStack } from '../stack/demo-cdk-stack';
 
 const app = new cdk.App();
 
-
+// Get environment specific configuration properties
 function getEnvConfig(envConfigName: string) {
   const envConfig = load(fs.readFileSync(path.resolve("./env/" + envConfigName + ".yaml"), "utf8"));
   return envConfig;
@@ -18,7 +18,6 @@ async function Main() {
   if (!envConfigName)
     throw new Error("Context variable missing on CDK command. Pass in as `-c envConfig=myEnvStageXxx` ");
   const envConfig = getEnvConfig(envConfigName);
-
 
   const stackName = envConfigName + "-app-resources";
   new DemoCdkStack(app, stackName, envConfig);
