@@ -14,9 +14,6 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
 * `cdk diff`        compare deployed stack with current state
 * `cdk synth`       emits the synthesized CloudFormation template
 
-
-
-
 ## Initial setup for CDK
 
 Create bucket for the templates and a lot of IAM roles are created. This will actually create a stack.
@@ -32,3 +29,20 @@ Create bucket for the templates and a lot of IAM roles are created. This will ac
 ## Delete the stack
 
     cdk destroy stage14-app-resources -c envConfig=stage14
+
+
+## Protecting secrets
+Generate RSA key pair but do not check-in the keypair.pem file to Git.
+
+    openssl genrsa -out keypair.pem 2048
+    openssl rsa -in keypair.pem -pubout -out publickey.pem
+
+RSA encrypt with PKCS#1 v1.5 padding and base64 encode the secret string 'my-secret-pw' using the public key and then you need to save the secret in the env's properties file.
+
+    echo -n 'my-secret-pw' | openssl rsautl -encrypt -pkcs -pubin -inkey publickey.pem | base64
+
+The the custom function for decrypting whch uses node.js built in decrypt and the keypair.pem file can be use:
+
+    decryptProperty(envConfig, 'slrk.deploy.resource-secret');
+
+

@@ -1,2 +1,6 @@
-slrk.deploy.bucket-name: slrk-my-bucket-for-stage14
-slrk.deploy.resource-secret: somePw
+# properties for env stage14 
+# using yaml anchors and aliases
+
+slrk.deploy.bucket-main-name: &bucket-name slrk-my-bucket-for-stage14 
+slrk.deploy.resource-secret: HGO5y1RkW2SsZNcg3Ugi+8NSkuscXbaRiKHwPv0YCPM5i3i95EkWWV4nrX0jHBW+g8MGip7eZMuinfkrkHWUzfcjgyTNUdXTHJqomFWt/Yru5RI7OuShW+VCa2su7VeZLdYK3vxIiwRKwO+l811Ynn8PImU4xZFNZmELDuBNRBMKHWGJEIxvge+SyX6KVYd+ksN0VAyptPjHRdjRIUwVrZB73g5AfNCclpn55pbgyn49XDVXW+Vjw53+CIzvO6W5tM7SsQMsEy3pdPx+0ZBU+nYIFt4nJu+7KC/dKpfKhK10tUkGxDxJb2JS0ippW18yaXq7OQB+1bjMpucbBAZR3A==
+slrk.deploy.bucket-name: *bucket-name
