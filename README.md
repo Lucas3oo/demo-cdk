@@ -16,6 +16,9 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
 
 ## Initial setup for CDK
 
+    brew install aws-cdk
+
+
 Create bucket for the templates and a lot of IAM roles are created. This will actually create a stack.
 
     cdk bootstrap aws://274795428224/eu-north-1

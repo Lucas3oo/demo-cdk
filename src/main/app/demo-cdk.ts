@@ -1,16 +1,18 @@
 #!/usr/bin/env node
-import * as cdk from 'aws-cdk-lib';
-import { DemoCdkStack } from '../stack/demo-cdk-stack';
-import { getEnvConfig } from '../utils/config';
+import * as cdk from 'aws-cdk-lib'
+import { DemoCdkStack } from '../stack/demo-cdk-stack'
+import { getEnvConfig } from '../utils/config'
 
-const app = new cdk.App();
+const app = new cdk.App()
 
-export async function main() {
-  const envConfig = getEnvConfig(app);
+function main(): DemoCdkStack {
+  const envConfig = getEnvConfig(app)
 
-  const stackName = app.node.tryGetContext('envConfig') + "-app-resources";
-  new DemoCdkStack(app, stackName, envConfig);
+  const envConfigName: string = app.node.tryGetContext('envConfig')
+  const stackName: string = envConfigName + '-app-resources'
+  const stack: DemoCdkStack = new DemoCdkStack(app, stackName, envConfig)
+  return stack
 }
 
-main();
-
+// eslint-disable-next-line @typescript-eslint/no-floating-promises
+main()
