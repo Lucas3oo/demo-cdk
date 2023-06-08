@@ -5,3 +5,4 @@ export class MyClass2 { // NOSONAR
 }
 
 
+
