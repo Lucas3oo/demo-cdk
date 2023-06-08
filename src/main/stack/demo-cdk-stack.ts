@@ -7,7 +7,7 @@ export class DemoCdkStack extends Stack {
   constructor (scope: Construct, id: string, envConfig: any, props?: StackProps) {
     super(scope, id, props)
 
-    const bucket1 = new Bucket(this, 'bucket1', { // NOSONA_R
+    const bucket1 = new Bucket(this, 'bucket1', { // NOSONAR
       bucketName: getProperty(envConfig, 'slrk.deploy.bucket-name'),
       versioned: true,
       websiteRedirect: { hostName: 'aws.amazon.com' }
