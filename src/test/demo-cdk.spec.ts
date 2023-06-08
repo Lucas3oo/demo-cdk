@@ -10,7 +10,7 @@ test('Bucket Created', () => {
 
   const template = Template.fromStack(stack)
 
-//  template.hasResourceProperties('AWS::S3::Bucket', {
-//    VisibilityTimeout: 300
-//  })
+  template.hasResourceProperties('AWS::S3::Bucket', {
+    VisibilityTimeout: 300
+  })
 })
