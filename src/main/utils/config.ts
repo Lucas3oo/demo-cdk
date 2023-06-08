@@ -1,7 +1,7 @@
 import * as yaml from 'yaml'
 import * as fs from 'fs'
 import * as path from 'path'
-import { type App } from 'aws-cdk-lib'
+import type { App } from 'aws-cdk-lib'
 import * as crypto from 'crypto'
 
 // Get environment specific configuration properties

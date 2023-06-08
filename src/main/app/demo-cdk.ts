@@ -1,9 +1,9 @@
 #!/usr/bin/env node
-import * as cdk from 'aws-cdk-lib'
+import { App } from 'aws-cdk-lib'
 import { DemoCdkStack } from '../stack/demo-cdk-stack'
 import { getEnvConfig } from '../utils/config'
 
-const app = new cdk.App()
+const app = new App()
 
 function main(): DemoCdkStack {
   const envConfig = getEnvConfig(app)
