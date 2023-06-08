@@ -6,3 +6,4 @@ describe('No assertion', function() {
     console.log(str)
   })
 })
+
