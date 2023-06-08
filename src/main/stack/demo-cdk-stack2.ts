@@ -3,11 +3,11 @@ import { Bucket } from 'aws-cdk-lib/aws-s3'
 import type { Construct } from 'constructs'
 import { getProperty, decryptProperty } from '../utils/config'
 
-export class DemoCdkStack extends Stack {
+export class DemoCdkStack2 extends Stack {
   constructor (scope: Construct, id: string, envConfig: any, props?: StackProps) {
     super(scope, id, props)
 
-    const bucket1 = new Bucket(this, 'bucket1', { // NOSONAR
+    const bucket1 = new Bucket(this, 'bucket1', {
       bucketName: getProperty(envConfig, 'slrk.deploy.bucket-name'),
       versioned: true,
       websiteRedirect: { hostName: 'aws.amazon.com' }
