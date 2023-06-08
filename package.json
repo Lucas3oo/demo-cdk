@@ -9,7 +9,7 @@
     "watch": "tsc -w",
     "test": "jest",
     "cdk": "cdk",
-    "eslint": "eslint src",
+    "eslint": "eslint -v",
     "eslint-sarif": "eslint -f @microsoft/eslint-formatter-sarif -o build/eslint-report.sarif src"
   },
   "devDependencies": {
