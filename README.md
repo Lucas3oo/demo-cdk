@@ -1,4 +1,4 @@
-# Welcome to your CDK TypeScript project
+# demo-cdk
 
 You should explore the contents of this project. It demonstrates a CDK app with an instance of a stack (`DemoCdkStack`)
 which contains an Amazon SQS queue that is subscribed to an Amazon SNS topic.
@@ -44,8 +44,33 @@ RSA encrypt with PKCS#1 v1.5 padding and base64 encode the secret string 'my-sec
 
     echo -n 'my-secret-pw' | openssl rsautl -encrypt -pkcs -pubin -inkey publickey.pem | base64
 
-The the custom function for decrypting whch uses node.js built in decrypt and the keypair.pem file can be use:
+The the custom function for decrypting which uses node.js built in decrypt and the keypair.pem file can be use:
 
     decryptProperty(envConfig, 'slrk.deploy.resource-secret');
+
+## Static code analysis of CDK code
+Install the tool checkov which have currently 163 rules for Cloudformation.
+
+    brew install checkov
+
+    cdk synth --quiet -c envConfig=stage14 && checkov --framework cloudformation -o sarif --directory cdk.out/ --output-file-path build/checkov --soft-fail
+
+Soft-fail so the command return 0 even if there are failed checks.
+
+The resulting report will be
+
+    build/checkov/results_sarif.sarif
+
+Docker:
+
+    docker run --volume $(pwd):/workdir --workdir /workdir bridgecrew/checkov --framework cloudformation -o sarif --directory cdk.out/ --output-file-path build/checkov --soft-fail
+
+In Azure DevOps:
+
+    - task: Docker@2
+      displayName: 'Run Checkov for static code analysis of Cloudformation'
+      inputs:
+        command: run
+        arguments: --volume $(pwd):/workdir --workdir /workdir bridgecrew/checkov  --framework cloudformation -o sarif --directory cdk.out/ --output-file-path build/checkov --soft-fail
 
 
