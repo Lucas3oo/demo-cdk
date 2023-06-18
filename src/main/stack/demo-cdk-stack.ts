@@ -16,6 +16,8 @@ export class DemoCdkStack extends Stack {
     const tagValue = decryptProperty(envConfig, 'slrk.deploy.resource-secret')
 
     Tags.of(bucket1).add('my-key', tagValue)
+    Tags.of(bucket1).add('env', scope.node.tryGetContext('envConfig'))
+    Tags.of(bucket1).add('owner', 'lucas')
 
     const cfnBucket = bucket1.node.defaultChild as CfnBucket
 

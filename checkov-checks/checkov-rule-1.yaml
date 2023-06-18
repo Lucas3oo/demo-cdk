@@ -1,0 +1,17 @@
+metadata:
+  name: "Check that all resources have tags"
+  id: "SLRK_AWS_1"
+  category: "GENERAL_SECURITY" # see https://www.checkov.io/3.Custom%20Policies/YAML%20Custom%20Policies.html
+  guideline: "https://to_our_wiki_with_req"
+definition:
+  and:
+  - cond_type: "attribute"
+    resource_types: "AWS::S3::Bucket"
+    attribute: "Tags"
+    operator: "exists"
+  - cond_type: "attribute"
+    resource_types: "AWS::S3::Bucket"
+    attribute: "Tags"
+    operator: "exists"
+
+# https://github.com/yogeek/checkov-sample-custom-checks

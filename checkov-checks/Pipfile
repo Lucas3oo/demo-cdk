@@ -1,0 +1,5 @@
+[packages]
+bridgecrew = "1.0.457"
+
+[requires]
+python_version = "3.8"
