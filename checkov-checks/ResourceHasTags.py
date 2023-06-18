@@ -9,7 +9,7 @@ def has_key(key: str, tags: list):
 
 class ResourceHasTags(BaseResourceCheck):
     def __init__(self):
-        name = 'Ensure S3 resources are tagged with "env" and "owner".'
+        name = 'Ensure S3 resources are tagged with "env", "owner" and "impact".'
         check_id = 'SLRK_AWS_3'
         categories = [CheckCategories.CONVENTION]
         supported_resources = ['AWS::*::*']
@@ -19,7 +19,7 @@ class ResourceHasTags(BaseResourceCheck):
         
         if 'Tags' in conf['Properties']:
             tags: list = conf['Properties']['Tags']
-            if has_key('env', tags) & has_key('owner', tags):
+            if has_key('env', tags) & has_key('owner', tags) & has_key('impact', tags):
                 return CheckResult.PASSED
         return CheckResult.FAILED
 
